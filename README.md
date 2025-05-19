@@ -1,8 +1,10 @@
-# Map Controls
+# Map Controls (ALPHA)
 
 A framework-agnostic TypeScript module for map panning and zooming.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
+#### NOTE: this framework is still under development.  Usage results may vary.
 
 ## Features
 
