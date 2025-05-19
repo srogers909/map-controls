@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Map Controls Documentation - Map Controls Documentation</title>
+  <link rel="stylesheet" href="/documentation/assets/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.0.0/dist/mermaid.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Initialize syntax highlighting
+      hljs.highlightAll();
+      
+      // Initialize mermaid diagrams
+      mermaid.initialize({ 
+        startOnLoad: true,
+        theme: 'neutral',
+        flowchart: { 
+          useMaxWidth: true, 
+          htmlLabels: true 
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Map Controls Documentation</h1>
+    </header>
+    
+    <nav class="main-nav">
+      <ul>
+        <li><a href="/documentation/index.html">Home</a></li>
+        <li><a href="/documentation/guides/getting-started.html">Getting Started</a></li>
+        <li><a href="/documentation/guides/installation.html">Installation</a></li>
+        <li><a href="/documentation/api/index.html">API Reference</a></li>
+        <li><a href="/documentation/examples/index.html">Examples</a></li>
+        <li><a href="/documentation/guides/advanced-usage.html">Advanced Usage</a></li>
+      </ul>
+    </nav>
+    
+    <main>
+      <h1 id="map-controls-documentation">Map Controls Documentation</h1>
+<p>Welcome to the official documentation for the Map Controls module, a framework-agnostic TypeScript library for map panning and zooming.</p>
+<div class="hero">
+  <img src="assets/map-controls-logo.png" alt="Map Controls Logo" class="logo" />
+  <p class="tagline">A powerful, lightweight solution for interactive maps</p>
+</div>
+
+<h2 id="overview">Overview</h2>
+<p>Map Controls is a TypeScript module that provides pan and zoom functionality for custom maps. It&#39;s designed to be framework-agnostic, making it compatible with any JavaScript project. Whether you&#39;re building a web application with React, Angular, Vue, or vanilla JavaScript, Map Controls can be easily integrated to provide interactive map features.</p>
+<h2 id="key-features">Key Features</h2>
+<ul>
+<li><strong>Framework Agnostic</strong>: Works with any JavaScript framework or vanilla JS</li>
+<li><strong>TypeScript Support</strong>: Full TypeScript definitions for enhanced development experience</li>
+<li><strong>Pan &amp; Zoom</strong>: Smooth panning and zooming functionality for custom maps</li>
+<li><strong>Boundary Constraints</strong>: Configurable boundaries to control pan and zoom limits</li>
+<li><strong>Mouse &amp; Touch Support</strong>: Works with both mouse and touch interactions</li>
+<li><strong>Control Buttons</strong>: Optional UI controls for zoom and pan operations</li>
+<li><strong>Event System</strong>: Comprehensive event system for tracking user interactions</li>
+<li><strong>Extendable Architecture</strong>: Designed to be extended for custom requirements</li>
+</ul>
+<h2 id="quick-navigation">Quick Navigation</h2>
+<div class="nav-grid">
+  <a href="guides/getting-started.md" class="nav-item">
+    <h3>🚀 Getting Started</h3>
+    <p>Quick start guide to integrate Map Controls into your project</p>
+  </a>
+  <a href="guides/installation.md" class="nav-item">
+    <h3>📦 Installation</h3>
+    <p>Step-by-step installation instructions</p>
+  </a>
+  <a href="api/index.md" class="nav-item">
+    <h3>📚 API Reference</h3>
+    <p>Detailed API documentation for all components</p>
+  </a>
+  <a href="examples/index.md" class="nav-item">
+    <h3>💡 Examples</h3>
+    <p>Code examples and usage scenarios</p>
+  </a>
+  <a href="guides/advanced-usage.md" class="nav-item">
+    <h3>🔧 Advanced Usage</h3>
+    <p>Advanced techniques and customization options</p>
+  </a>
+  <a href="guides/contributing.md" class="nav-item">
+    <h3>👥 Contributing</h3>
+    <p>Guidelines for contributing to the project</p>
+  </a>
+</div>
+
+<h2 id="architecture-overview">Architecture Overview</h2>
+<p>The Map Controls module is built with a modular architecture that separates concerns into distinct components:</p>
+<pre><code class="hljs language-mermaid">graph TD
+    A[MapControls] --&gt; B[EventManager]
+    A --&gt; C[CanvasRenderer]
+    A --&gt; D[MouseHandler]
+    A --&gt; E[TouchHandler]
+    A --&gt; F[ControlsManager]
+    F --&gt; G[ZoomControls]
+    F --&gt; H[PanControls]
+    A --&gt; I[Utils]
+    I --&gt; J[Math Utils]
+    I --&gt; K[DOM Utils]
+    
+    classDef core fill:#f9f,stroke:#333,stroke-width:2px
+    classDef handlers fill:#bbf,stroke:#333,stroke-width:1px
+    classDef controls fill:#bfb,stroke:#333,stroke-width:1px
+    classDef utils fill:#fbb,stroke:#333,stroke-width:1px
+    
+    class A core
+    class B,C core
+    class D,E handlers
+    class F,G,H controls
+    class I,J,K utils
+</code></pre>
+<h2 id="getting-help">Getting Help</h2>
+<p>If you encounter any issues or have questions about using Map Controls, please check the <a href="guides/troubleshooting.md">Troubleshooting</a> guide or <a href="https://github.com/your-repo/map-controls/issues">open an issue</a> on GitHub.</p>
+<div class="footer">
+  <p>Map Controls is licensed under the MIT License.</p>
+</div>
+
+    </main>
+    
+    <footer class="footer">
+      <p>Map Controls is licensed under the MIT License.</p>
+      <p>Documentation generated on 5/18/2025</p>
+    </footer>
+  </div>
+</body>
+</html>

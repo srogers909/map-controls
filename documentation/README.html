@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Map Controls Documentation - Map Controls Documentation</title>
+  <link rel="stylesheet" href="/documentation/assets/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.0.0/dist/mermaid.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Initialize syntax highlighting
+      hljs.highlightAll();
+      
+      // Initialize mermaid diagrams
+      mermaid.initialize({ 
+        startOnLoad: true,
+        theme: 'neutral',
+        flowchart: { 
+          useMaxWidth: true, 
+          htmlLabels: true 
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Map Controls Documentation</h1>
+    </header>
+    
+    <nav class="main-nav">
+      <ul>
+        <li><a href="/documentation/index.html">Home</a></li>
+        <li><a href="/documentation/guides/getting-started.html">Getting Started</a></li>
+        <li><a href="/documentation/guides/installation.html">Installation</a></li>
+        <li><a href="/documentation/api/index.html">API Reference</a></li>
+        <li><a href="/documentation/examples/index.html">Examples</a></li>
+        <li><a href="/documentation/guides/advanced-usage.html">Advanced Usage</a></li>
+      </ul>
+    </nav>
+    
+    <main>
+      <h1 id="map-controls-documentation">Map Controls Documentation</h1>
+<p>This folder contains comprehensive documentation for the Map Controls module.</p>
+<h2 id="documentation-structure">Documentation Structure</h2>
+<p>The documentation is organized into the following sections:</p>
+<ul>
+<li><strong>Home</strong>: The main landing page with an overview of the module</li>
+<li><strong>Guides</strong>: Step-by-step instructions for common tasks</li>
+<li><strong>API Reference</strong>: Detailed documentation of all classes, methods, and interfaces</li>
+<li><strong>Examples</strong>: Code examples demonstrating various use cases</li>
+<li><strong>Assets</strong>: Styles and images used in the documentation</li>
+</ul>
+<h2 id="viewing-the-documentation">Viewing the Documentation</h2>
+<h3 id="option-1-all-in-one-command">Option 1: All-in-One Command</h3>
+<p>The easiest way to build and view the documentation is to use the all-in-one command:</p>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># From the project root</span>
+npm run docs
+</code></pre>
+<p>This will:</p>
+<ol>
+<li>Build the documentation (convert Markdown to HTML)</li>
+<li>Generate a sitemap</li>
+<li>Start a local server and open the documentation in your browser</li>
+</ol>
+<h3 id="option-2-individual-commands">Option 2: Individual Commands</h3>
+<p>You can also use the individual commands:</p>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># Build the documentation (convert Markdown to HTML)</span>
+npm run build-docs
+
+<span class="hljs-comment"># Generate sitemap</span>
+npm run generate-sitemap
+
+<span class="hljs-comment"># Check for broken links in the documentation</span>
+npm run check-links
+
+<span class="hljs-comment"># Serve the documentation</span>
+npm run serve-docs
+</code></pre>
+<h3 id="option-3-view-locally">Option 3: View Locally</h3>
+<p>To view the documentation locally without a server, simply open the <code>index.html</code> file in your web browser:</p>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># Open with your default browser</span>
+open index.html  <span class="hljs-comment"># macOS</span>
+start index.html  <span class="hljs-comment"># Windows</span>
+xdg-open index.html  <span class="hljs-comment"># Linux</span>
+</code></pre>
+<p>Note: Some features like diagrams may not render correctly without a server.</p>
+<h2 id="documentation-features">Documentation Features</h2>
+<p>The documentation includes:</p>
+<ol>
+<li><strong>Interactive Diagrams</strong>: Mermaid diagrams that visualize the architecture and flows</li>
+<li><strong>Syntax Highlighting</strong>: Code examples with proper syntax highlighting</li>
+<li><strong>Cross-References</strong>: Links between related sections for easy navigation</li>
+<li><strong>Responsive Design</strong>: Documentation is readable on all devices</li>
+</ol>
+<h2 id="customizing-the-documentation">Customizing the Documentation</h2>
+<h3 id="styles">Styles</h3>
+<p>The documentation uses a custom CSS file located at <code>assets/styles.css</code>. You can modify this file to change the appearance of the documentation.</p>
+<h3 id="adding-new-pages">Adding New Pages</h3>
+<p>To add a new page:</p>
+<ol>
+<li>Create a new Markdown (<code>.md</code>) or HTML (<code>.html</code>) file in the appropriate directory</li>
+<li>Add links to the new page from existing pages</li>
+<li>Update the navigation if necessary</li>
+</ol>
+<h2 id="building-the-documentation">Building the Documentation</h2>
+<p>The documentation is written in a combination of Markdown and HTML. Markdown files are rendered as HTML when viewed in a browser with the appropriate extensions.</p>
+<p>If you make changes to the documentation, you may need to rebuild it:</p>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># If using a documentation generator (not included by default)</span>
+npm run build-docs
+</code></pre>
+<h2 id="contributing-to-the-documentation">Contributing to the Documentation</h2>
+<p>If you find errors or want to improve the documentation:</p>
+<ol>
+<li>Make your changes to the relevant files</li>
+<li>Test the documentation locally to ensure it renders correctly</li>
+<li>Submit a pull request with your changes</li>
+</ol>
+<h2 id="license">License</h2>
+<p>The documentation is licensed under the same license as the Map Controls module (MIT).</p>
+
+    </main>
+    
+    <footer class="footer">
+      <p>Map Controls is licensed under the MIT License.</p>
+      <p>Documentation generated on 5/18/2025</p>
+    </footer>
+  </div>
+</body>
+</html>

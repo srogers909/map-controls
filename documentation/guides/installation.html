@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Installation Guide - Map Controls Documentation</title>
+  <link rel="stylesheet" href="/documentation/assets/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.0.0/dist/mermaid.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Initialize syntax highlighting
+      hljs.highlightAll();
+      
+      // Initialize mermaid diagrams
+      mermaid.initialize({ 
+        startOnLoad: true,
+        theme: 'neutral',
+        flowchart: { 
+          useMaxWidth: true, 
+          htmlLabels: true 
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Installation Guide</h1>
+    </header>
+    
+    <nav class="main-nav">
+      <ul>
+        <li><a href="/documentation/index.html">Home</a></li>
+        <li><a href="/documentation/guides/getting-started.html">Getting Started</a></li>
+        <li><a href="/documentation/guides/installation.html">Installation</a></li>
+        <li><a href="/documentation/api/index.html">API Reference</a></li>
+        <li><a href="/documentation/examples/index.html">Examples</a></li>
+        <li><a href="/documentation/guides/advanced-usage.html">Advanced Usage</a></li>
+      </ul>
+    </nav>
+    
+    <main>
+      <h1 id="installation-guide">Installation Guide</h1>
+<p>This guide provides detailed instructions for installing and setting up the Map Controls module in your project.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before installing Map Controls, ensure your development environment meets the following requirements:</p>
+<ul>
+<li><strong>Node.js</strong>: Version 14.0.0 or higher</li>
+<li><strong>npm</strong>: Version 6.0.0 or higher (comes with Node.js)</li>
+<li><strong>TypeScript</strong>: Version 4.0.0 or higher (for TypeScript projects)</li>
+<li><strong>Modern Browser</strong>: Chrome, Firefox, Safari, or Edge</li>
+</ul>
+<h2 id="installation-methods">Installation Methods</h2>
+<h3 id="using-npm">Using npm</h3>
+<p>The recommended way to install Map Controls is through npm:</p>
+<pre><code class="hljs language-bash">npm install map-controls --save
+</code></pre>
+<p>This will add Map Controls to your project&#39;s dependencies in <code>package.json</code>.</p>
+<h3 id="using-yarn">Using yarn</h3>
+<p>If you prefer yarn as your package manager:</p>
+<pre><code class="hljs language-bash">yarn add map-controls
+</code></pre>
+<h3 id="manual-installation">Manual Installation</h3>
+<p>For projects that don&#39;t use a package manager, you can manually install Map Controls:</p>
+<ol>
+<li>Download the latest release from the <a href="https://github.com/your-repo/map-controls/releases">GitHub repository</a></li>
+<li>Extract the files to your project directory</li>
+<li>Include the script in your HTML:</li>
+</ol>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;path/to/map-controls/dist/index.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<h2 id="project-setup">Project Setup</h2>
+<h3 id="typescript-projects">TypeScript Projects</h3>
+<p>If you&#39;re using TypeScript, Map Controls comes with built-in type definitions. Add the following to your <code>tsconfig.json</code> to ensure proper type checking:</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;compilerOptions&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;target&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;es6&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;module&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;esnext&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;moduleResolution&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;node&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;esModuleInterop&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;lib&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;dom&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;es2017&quot;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;strict&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<h3 id="javascript-projects">JavaScript Projects</h3>
+<p>For JavaScript projects, you can import Map Controls using ES modules or CommonJS:</p>
+<p><strong>ES Modules:</strong></p>
+<pre><code class="hljs language-javascript"><span class="hljs-keyword">import</span> { <span class="hljs-title class_">MapControls</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;map-controls&#x27;</span>;
+</code></pre>
+<p><strong>CommonJS:</strong></p>
+<pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> { <span class="hljs-title class_">MapControls</span> } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;map-controls&#x27;</span>);
+</code></pre>
+<p><strong>Browser (UMD):</strong></p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;node_modules/map-controls/dist/index.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+  <span class="hljs-keyword">const</span> mapControls = <span class="hljs-keyword">new</span> <span class="hljs-title class_">MapControls</span>.<span class="hljs-title class_">MapControls</span>({
+    <span class="hljs-comment">// options</span>
+  });
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<h2 id="webpack-configuration">Webpack Configuration</h2>
+<p>If you&#39;re using Webpack, ensure your configuration properly handles TypeScript files:</p>
+<pre><code class="hljs language-javascript"><span class="hljs-comment">// webpack.config.js</span>
+<span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = {
+  <span class="hljs-attr">entry</span>: <span class="hljs-string">&#x27;./src/index.ts&#x27;</span>,
+  <span class="hljs-attr">module</span>: {
+    <span class="hljs-attr">rules</span>: [
+      {
+        <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.tsx?$/</span>,
+        <span class="hljs-attr">use</span>: <span class="hljs-string">&#x27;ts-loader&#x27;</span>,
+        <span class="hljs-attr">exclude</span>: <span class="hljs-regexp">/node_modules/</span>
+      }
+    ]
+  },
+  <span class="hljs-attr">resolve</span>: {
+    <span class="hljs-attr">extensions</span>: [<span class="hljs-string">&#x27;.tsx&#x27;</span>, <span class="hljs-string">&#x27;.ts&#x27;</span>, <span class="hljs-string">&#x27;.js&#x27;</span>]
+  },
+  <span class="hljs-attr">output</span>: {
+    <span class="hljs-attr">filename</span>: <span class="hljs-string">&#x27;bundle.js&#x27;</span>,
+    <span class="hljs-attr">path</span>: path.<span class="hljs-title function_">resolve</span>(__dirname, <span class="hljs-string">&#x27;dist&#x27;</span>)
+  }
+};
+</code></pre>
+<h2 id="verifying-installation">Verifying Installation</h2>
+<p>To verify that Map Controls is correctly installed, create a simple test file:</p>
+<pre><code class="hljs language-typescript"><span class="hljs-comment">// test.ts</span>
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">MapControls</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;map-controls&#x27;</span>;
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;MapControls imported successfully:&#x27;</span>, <span class="hljs-title class_">MapControls</span>);
+</code></pre>
+<p>Or for browser environments, check the console:</p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;node_modules/map-controls/dist/index.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;MapControls loaded:&#x27;</span>, <span class="hljs-keyword">typeof</span> <span class="hljs-title class_">MapControls</span>);
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<h2 id="troubleshooting-installation-issues">Troubleshooting Installation Issues</h2>
+<h3 id="common-issues">Common Issues</h3>
+<ol>
+<li><p><strong>Module not found error</strong>:</p>
+<ul>
+<li>Ensure the package is correctly installed in <code>node_modules</code></li>
+<li>Check your import path is correct</li>
+<li>Verify your module resolution settings in tsconfig.json</li>
+</ul>
+</li>
+<li><p><strong>TypeScript errors</strong>:</p>
+<ul>
+<li>Make sure you&#39;re using a compatible TypeScript version</li>
+<li>Check that your tsconfig.json includes the necessary lib files</li>
+</ul>
+</li>
+<li><p><strong>Browser loading issues</strong>:</p>
+<ul>
+<li>Ensure the path to the UMD bundle is correct</li>
+<li>Check browser console for any loading errors</li>
+<li>Verify that the script is loaded before you try to use it</li>
+</ul>
+</li>
+</ol>
+<h3 id="resolving-dependency-conflicts">Resolving Dependency Conflicts</h3>
+<p>If you encounter dependency conflicts, try the following:</p>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># Clear npm cache</span>
+npm cache clean --force
+
+<span class="hljs-comment"># Reinstall dependencies</span>
+<span class="hljs-built_in">rm</span> -rf node_modules
+npm install
+</code></pre>
+<h2 id="next-steps">Next Steps</h2>
+<p>Now that you have successfully installed Map Controls, proceed to the <a href="getting-started.md">Getting Started Guide</a> to learn how to use it in your project.</p>
+<p>For more advanced setup options, see the <a href="advanced-usage.md">Advanced Configuration</a> guide.</p>
+
+    </main>
+    
+    <footer class="footer">
+      <p>Map Controls is licensed under the MIT License.</p>
+      <p>Documentation generated on 5/18/2025</p>
+    </footer>
+  </div>
+</body>
+</html>

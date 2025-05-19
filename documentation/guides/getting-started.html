@@ -1,0 +1,246 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Getting Started with Map Controls - Map Controls Documentation</title>
+  <link rel="stylesheet" href="/documentation/assets/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.0.0/dist/mermaid.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Initialize syntax highlighting
+      hljs.highlightAll();
+      
+      // Initialize mermaid diagrams
+      mermaid.initialize({ 
+        startOnLoad: true,
+        theme: 'neutral',
+        flowchart: { 
+          useMaxWidth: true, 
+          htmlLabels: true 
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Getting Started with Map Controls</h1>
+    </header>
+    
+    <nav class="main-nav">
+      <ul>
+        <li><a href="/documentation/index.html">Home</a></li>
+        <li><a href="/documentation/guides/getting-started.html">Getting Started</a></li>
+        <li><a href="/documentation/guides/installation.html">Installation</a></li>
+        <li><a href="/documentation/api/index.html">API Reference</a></li>
+        <li><a href="/documentation/examples/index.html">Examples</a></li>
+        <li><a href="/documentation/guides/advanced-usage.html">Advanced Usage</a></li>
+      </ul>
+    </nav>
+    
+    <main>
+      <h1 id="getting-started-with-map-controls">Getting Started with Map Controls</h1>
+<p>This guide will help you quickly integrate the Map Controls module into your project and start using its features.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before you begin, make sure you have:</p>
+<ul>
+<li>Node.js (version 14 or higher)</li>
+<li>npm or yarn package manager</li>
+<li>A web project where you want to add map controls</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>You can install the Map Controls module using npm or yarn:</p>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># Using npm</span>
+npm install map-controls
+
+<span class="hljs-comment"># Using yarn</span>
+yarn add map-controls
+</code></pre>
+<p>For more detailed installation instructions, see the <a href="installation.md">Installation Guide</a>.</p>
+<h2 id="basic-usage">Basic Usage</h2>
+<h3 id="1-import-the-module">1. Import the Module</h3>
+<p>First, import the MapControls class from the module:</p>
+<pre><code class="hljs language-typescript"><span class="hljs-comment">// Using ES modules</span>
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">MapControls</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;map-controls&#x27;</span>;
+
+<span class="hljs-comment">// Using CommonJS</span>
+<span class="hljs-keyword">const</span> { <span class="hljs-title class_">MapControls</span> } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;map-controls&#x27;</span>);
+</code></pre>
+<h3 id="2-create-html-structure">2. Create HTML Structure</h3>
+<p>Add a container element to your HTML where the map will be displayed:</p>
+<pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;map-container&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 800px; height: 500px;&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<h3 id="3-initialize-map-controls">3. Initialize Map Controls</h3>
+<p>Create a new instance of MapControls with your configuration:</p>
+<pre><code class="hljs language-typescript"><span class="hljs-comment">// Get the container element</span>
+<span class="hljs-keyword">const</span> container = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;map-container&#x27;</span>);
+
+<span class="hljs-comment">// Create a new MapControls instance</span>
+<span class="hljs-keyword">const</span> mapControls = <span class="hljs-keyword">new</span> <span class="hljs-title class_">MapControls</span>({
+  <span class="hljs-attr">container</span>: container,
+  <span class="hljs-attr">mapSrc</span>: <span class="hljs-string">&#x27;path/to/your-map-image.jpg&#x27;</span>,
+  <span class="hljs-attr">initialZoom</span>: <span class="hljs-number">1</span>,
+  <span class="hljs-attr">minZoom</span>: <span class="hljs-number">0.5</span>,
+  <span class="hljs-attr">maxZoom</span>: <span class="hljs-number">3</span>,
+  <span class="hljs-attr">showControls</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">controlsPosition</span>: <span class="hljs-string">&#x27;bottom-right&#x27;</span>
+});
+</code></pre>
+<h3 id="4-handle-events">4. Handle Events</h3>
+<p>You can listen for events to respond to user interactions:</p>
+<pre><code class="hljs language-typescript"><span class="hljs-comment">// Listen for zoom events</span>
+mapControls.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;zoom&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">level</span>) =&gt;</span> {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Zoom level changed to: <span class="hljs-subst">${level}</span>`</span>);
+});
+
+<span class="hljs-comment">// Listen for pan events</span>
+mapControls.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;pan&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">position</span>) =&gt;</span> {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Map panned to position: <span class="hljs-subst">${position.x}</span>, <span class="hljs-subst">${position.y}</span>`</span>);
+});
+
+<span class="hljs-comment">// Listen for load events</span>
+mapControls.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;load&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Map loaded successfully&#x27;</span>);
+});
+
+<span class="hljs-comment">// Listen for error events</span>
+mapControls.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;error&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">error</span>) =&gt;</span> {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Map error:&#x27;</span>, error);
+});
+</code></pre>
+<h3 id="5-control-the-map-programmatically">5. Control the Map Programmatically</h3>
+<p>You can control the map using the provided methods:</p>
+<pre><code class="hljs language-typescript"><span class="hljs-comment">// Zoom in</span>
+mapControls.<span class="hljs-title function_">zoomIn</span>();
+
+<span class="hljs-comment">// Zoom out</span>
+mapControls.<span class="hljs-title function_">zoomOut</span>();
+
+<span class="hljs-comment">// Pan to a specific position</span>
+mapControls.<span class="hljs-title function_">panTo</span>(<span class="hljs-number">100</span>, <span class="hljs-number">200</span>);
+
+<span class="hljs-comment">// Reset to initial state</span>
+mapControls.<span class="hljs-title function_">reset</span>();
+
+<span class="hljs-comment">// Show/hide controls</span>
+mapControls.<span class="hljs-title function_">showControls</span>();
+mapControls.<span class="hljs-title function_">hideControls</span>();
+</code></pre>
+<h2 id="complete-example">Complete Example</h2>
+<p>Here&#39;s a complete example that puts everything together:</p>
+<pre><code class="hljs language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Map Controls Example<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css">
+    <span class="hljs-selector-id">#map-container</span> {
+      <span class="hljs-attribute">width</span>: <span class="hljs-number">800px</span>;
+      <span class="hljs-attribute">height</span>: <span class="hljs-number">500px</span>;
+      <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#ccc</span>;
+      <span class="hljs-attribute">margin</span>: <span class="hljs-number">20px</span> auto;
+    }
+    
+    <span class="hljs-selector-class">.controls</span> {
+      <span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span> auto;
+      <span class="hljs-attribute">width</span>: <span class="hljs-number">800px</span>;
+      <span class="hljs-attribute">text-align</span>: center;
+    }
+    
+    <span class="hljs-selector-tag">button</span> {
+      <span class="hljs-attribute">padding</span>: <span class="hljs-number">8px</span> <span class="hljs-number">16px</span>;
+      <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">5px</span>;
+    }
+  </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;controls&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;zoom-in&quot;</span>&gt;</span>Zoom In<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;zoom-out&quot;</span>&gt;</span>Zoom Out<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;reset&quot;</span>&gt;</span>Reset<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;toggle-controls&quot;</span>&gt;</span>Toggle Controls<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;map-container&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;node_modules/map-controls/dist/index.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
+    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;DOMContentLoaded&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-comment">// Get the container element</span>
+      <span class="hljs-keyword">const</span> container = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;map-container&#x27;</span>);
+      
+      <span class="hljs-comment">// Create a new MapControls instance</span>
+      <span class="hljs-keyword">const</span> mapControls = <span class="hljs-keyword">new</span> <span class="hljs-title class_">MapControls</span>.<span class="hljs-title class_">MapControls</span>({
+        <span class="hljs-attr">container</span>: container,
+        <span class="hljs-attr">mapSrc</span>: <span class="hljs-string">&#x27;assets/world-map.jpg&#x27;</span>,
+        <span class="hljs-attr">initialZoom</span>: <span class="hljs-number">1</span>,
+        <span class="hljs-attr">minZoom</span>: <span class="hljs-number">0.5</span>,
+        <span class="hljs-attr">maxZoom</span>: <span class="hljs-number">3</span>,
+        <span class="hljs-attr">showControls</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">controlsPosition</span>: <span class="hljs-string">&#x27;bottom-right&#x27;</span>
+      });
+      
+      <span class="hljs-comment">// Set up event listeners</span>
+      mapControls.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;zoom&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">level</span>) =&gt;</span> {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Zoom level: <span class="hljs-subst">${level}</span>`</span>);
+      });
+      
+      mapControls.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;pan&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">position</span>) =&gt;</span> {
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Position: <span class="hljs-subst">${position.x}</span>, <span class="hljs-subst">${position.y}</span>`</span>);
+      });
+      
+      <span class="hljs-comment">// Set up UI controls</span>
+      <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;zoom-in&#x27;</span>).<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+        mapControls.<span class="hljs-title function_">zoomIn</span>();
+      });
+      
+      <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;zoom-out&#x27;</span>).<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+        mapControls.<span class="hljs-title function_">zoomOut</span>();
+      });
+      
+      <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;reset&#x27;</span>).<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+        mapControls.<span class="hljs-title function_">reset</span>();
+      });
+      
+      <span class="hljs-keyword">let</span> controlsVisible = <span class="hljs-literal">true</span>;
+      <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;toggle-controls&#x27;</span>).<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-keyword">if</span> (controlsVisible) {
+          mapControls.<span class="hljs-title function_">hideControls</span>();
+          <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;toggle-controls&#x27;</span>).<span class="hljs-property">textContent</span> = <span class="hljs-string">&#x27;Show Controls&#x27;</span>;
+        } <span class="hljs-keyword">else</span> {
+          mapControls.<span class="hljs-title function_">showControls</span>();
+          <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;toggle-controls&#x27;</span>).<span class="hljs-property">textContent</span> = <span class="hljs-string">&#x27;Hide Controls&#x27;</span>;
+        }
+        controlsVisible = !controlsVisible;
+      });
+    });
+  </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+<h2 id="next-steps">Next Steps</h2>
+<p>Now that you have a basic understanding of how to use Map Controls, you can:</p>
+<ul>
+<li>Learn about <a href="advanced-usage.md">advanced configuration options</a></li>
+<li>Explore the <a href="../api/index.md">API Reference</a> for detailed information about all available methods and options</li>
+<li>Check out more <a href="../examples/index.md">examples</a> for common use cases</li>
+<li>Learn how to <a href="extending.md">extend the functionality</a> for custom requirements</li>
+</ul>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>If you encounter any issues while setting up Map Controls, check the <a href="troubleshooting.md">Troubleshooting Guide</a> for common problems and solutions.</p>
+
+    </main>
+    
+    <footer class="footer">
+      <p>Map Controls is licensed under the MIT License.</p>
+      <p>Documentation generated on 5/18/2025</p>
+    </footer>
+  </div>
+</body>
+</html>

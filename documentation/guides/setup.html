@@ -1,0 +1,284 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Setting Up the Project - Map Controls Documentation</title>
+  <link rel="stylesheet" href="/documentation/assets/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.0.0/dist/mermaid.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Initialize syntax highlighting
+      hljs.highlightAll();
+      
+      // Initialize mermaid diagrams
+      mermaid.initialize({ 
+        startOnLoad: true,
+        theme: 'neutral',
+        flowchart: { 
+          useMaxWidth: true, 
+          htmlLabels: true 
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Setting Up the Project</h1>
+    </header>
+    
+    <nav class="main-nav">
+      <ul>
+        <li><a href="/documentation/index.html">Home</a></li>
+        <li><a href="/documentation/guides/getting-started.html">Getting Started</a></li>
+        <li><a href="/documentation/guides/installation.html">Installation</a></li>
+        <li><a href="/documentation/api/index.html">API Reference</a></li>
+        <li><a href="/documentation/examples/index.html">Examples</a></li>
+        <li><a href="/documentation/guides/advanced-usage.html">Advanced Usage</a></li>
+      </ul>
+    </nav>
+    
+    <main>
+      <h1 id="setting-up-the-project">Setting Up the Project</h1>
+<p>This guide will walk you through the process of setting up the Map Controls project for development.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before you begin, ensure you have the following installed on your system:</p>
+<ul>
+<li><strong>Node.js</strong>: Version 14.0.0 or higher</li>
+<li><strong>npm</strong>: Version 6.0.0 or higher (comes with Node.js)</li>
+<li><strong>Git</strong>: For version control</li>
+</ul>
+<h2 id="clone-the-repository">Clone the Repository</h2>
+<p>First, clone the repository from GitHub:</p>
+<pre><code class="hljs language-bash">git <span class="hljs-built_in">clone</span> https://github.com/your-repo/map-controls.git
+<span class="hljs-built_in">cd</span> map-controls
+</code></pre>
+<h2 id="install-dependencies">Install Dependencies</h2>
+<p>Install the project dependencies using npm:</p>
+<pre><code class="hljs language-bash">npm install
+</code></pre>
+<p>This will install all the required dependencies listed in the <code>package.json</code> file, including:</p>
+<ul>
+<li>TypeScript</li>
+<li>Webpack</li>
+<li>ESLint</li>
+<li>Prettier</li>
+<li>Jest (for testing)</li>
+</ul>
+<h2 id="project-structure">Project Structure</h2>
+<p>The project is organized as follows:</p>
+<pre><code>map-controls/
+├── dist/               # Compiled output (generated)
+├── src/                # Source code
+│   ├── controls/       # UI controls components
+│   ├── core/           # Core functionality
+│   ├── handlers/       # Event handlers
+│   ├── renderers/      # Rendering implementations
+│   ├── utils/          # Utility functions
+│   └── index.ts        # Main entry point
+├── example/            # Example implementation
+├── tests/              # Test files
+├── .gitignore          # Git ignore file
+├── jest.config.js      # Jest configuration
+├── package.json        # Project metadata and dependencies
+├── tsconfig.json       # TypeScript configuration
+└── webpack.config.js   # Webpack configuration
+</code></pre>
+<h2 id="development-workflow">Development Workflow</h2>
+<h3 id="building-the-project">Building the Project</h3>
+<p>To build the project for development:</p>
+<pre><code class="hljs language-bash">npm run dev
+</code></pre>
+<p>This will start Webpack in watch mode, which will automatically rebuild the project when changes are detected.</p>
+<p>To build the project for production:</p>
+<pre><code class="hljs language-bash">npm run build
+</code></pre>
+<p>This will create optimized production files in the <code>dist</code> directory.</p>
+<h3 id="running-the-example">Running the Example</h3>
+<p>To run the example application:</p>
+<pre><code class="hljs language-bash">npm run example
+</code></pre>
+<p>This will start a local development server and open the example in your default browser.</p>
+<h3 id="running-tests">Running Tests</h3>
+<p>To run the tests:</p>
+<pre><code class="hljs language-bash">npm <span class="hljs-built_in">test</span>
+</code></pre>
+<p>To run tests with coverage:</p>
+<pre><code class="hljs language-bash">npm <span class="hljs-built_in">test</span> -- --coverage
+</code></pre>
+<h3 id="linting-and-formatting">Linting and Formatting</h3>
+<p>To lint the code:</p>
+<pre><code class="hljs language-bash">npm run lint
+</code></pre>
+<p>To automatically fix linting issues:</p>
+<pre><code class="hljs language-bash">npm run lint -- --fix
+</code></pre>
+<p>To format the code using Prettier:</p>
+<pre><code class="hljs language-bash">npm run format
+</code></pre>
+<h2 id="configuration-files">Configuration Files</h2>
+<h3 id="typescript-configuration">TypeScript Configuration</h3>
+<p>The <code>tsconfig.json</code> file contains the TypeScript compiler options:</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;compilerOptions&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;target&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;es5&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;module&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;esnext&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;declaration&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;outDir&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;./dist&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;strict&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;esModuleInterop&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;skipLibCheck&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;forceConsistentCasingInFileNames&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;lib&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;dom&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;es2017&quot;</span><span class="hljs-punctuation">]</span>
+  <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;include&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;src/**/*&quot;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;exclude&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;node_modules&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;dist&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;tests&quot;</span><span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<h3 id="webpack-configuration">Webpack Configuration</h3>
+<p>The <code>webpack.config.js</code> file configures the build process:</p>
+<pre><code class="hljs language-javascript"><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;path&#x27;</span>);
+<span class="hljs-keyword">const</span> { <span class="hljs-title class_">CleanWebpackPlugin</span> } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;clean-webpack-plugin&#x27;</span>);
+<span class="hljs-keyword">const</span> <span class="hljs-title class_">CopyWebpackPlugin</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;copy-webpack-plugin&#x27;</span>);
+
+<span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = <span class="hljs-function">(<span class="hljs-params">env, argv</span>) =&gt;</span> {
+  <span class="hljs-keyword">const</span> isProduction = argv.<span class="hljs-property">mode</span> === <span class="hljs-string">&#x27;production&#x27;</span>;
+  
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">entry</span>: <span class="hljs-string">&#x27;./src/index.ts&#x27;</span>,
+    <span class="hljs-attr">mode</span>: isProduction ? <span class="hljs-string">&#x27;production&#x27;</span> : <span class="hljs-string">&#x27;development&#x27;</span>,
+    <span class="hljs-attr">devtool</span>: isProduction ? <span class="hljs-literal">false</span> : <span class="hljs-string">&#x27;inline-source-map&#x27;</span>,
+    <span class="hljs-attr">module</span>: {
+      <span class="hljs-attr">rules</span>: [
+        {
+          <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.tsx?$/</span>,
+          <span class="hljs-attr">use</span>: <span class="hljs-string">&#x27;ts-loader&#x27;</span>,
+          <span class="hljs-attr">exclude</span>: <span class="hljs-regexp">/node_modules/</span>
+        }
+      ]
+    },
+    <span class="hljs-attr">resolve</span>: {
+      <span class="hljs-attr">extensions</span>: [<span class="hljs-string">&#x27;.tsx&#x27;</span>, <span class="hljs-string">&#x27;.ts&#x27;</span>, <span class="hljs-string">&#x27;.js&#x27;</span>]
+    },
+    <span class="hljs-attr">output</span>: {
+      <span class="hljs-attr">filename</span>: <span class="hljs-string">&#x27;index.js&#x27;</span>,
+      <span class="hljs-attr">path</span>: path.<span class="hljs-title function_">resolve</span>(__dirname, <span class="hljs-string">&#x27;dist&#x27;</span>),
+      <span class="hljs-attr">library</span>: <span class="hljs-string">&#x27;MapControls&#x27;</span>,
+      <span class="hljs-attr">libraryTarget</span>: <span class="hljs-string">&#x27;umd&#x27;</span>,
+      <span class="hljs-attr">globalObject</span>: <span class="hljs-string">&#x27;this&#x27;</span>
+    },
+    <span class="hljs-attr">plugins</span>: [
+      <span class="hljs-keyword">new</span> <span class="hljs-title class_">CleanWebpackPlugin</span>(),
+      <span class="hljs-keyword">new</span> <span class="hljs-title class_">CopyWebpackPlugin</span>({
+        <span class="hljs-attr">patterns</span>: [
+          { <span class="hljs-attr">from</span>: <span class="hljs-string">&#x27;example&#x27;</span>, <span class="hljs-attr">to</span>: <span class="hljs-string">&#x27;example&#x27;</span> }
+        ]
+      })
+    ]
+  };
+};
+</code></pre>
+<h3 id="jest-configuration">Jest Configuration</h3>
+<p>The <code>jest.config.js</code> file configures the testing environment:</p>
+<pre><code class="hljs language-javascript"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = {
+  <span class="hljs-attr">preset</span>: <span class="hljs-string">&#x27;ts-jest&#x27;</span>,
+  <span class="hljs-attr">testEnvironment</span>: <span class="hljs-string">&#x27;jsdom&#x27;</span>,
+  <span class="hljs-attr">testMatch</span>: [<span class="hljs-string">&#x27;**/tests/**/*.test.ts&#x27;</span>],
+  <span class="hljs-attr">collectCoverageFrom</span>: [
+    <span class="hljs-string">&#x27;src/**/*.ts&#x27;</span>,
+    <span class="hljs-string">&#x27;!src/index.ts&#x27;</span>
+  ],
+  <span class="hljs-attr">coverageDirectory</span>: <span class="hljs-string">&#x27;coverage&#x27;</span>,
+  <span class="hljs-attr">coverageReporters</span>: [<span class="hljs-string">&#x27;text&#x27;</span>, <span class="hljs-string">&#x27;lcov&#x27;</span>],
+  <span class="hljs-attr">moduleFileExtensions</span>: [<span class="hljs-string">&#x27;ts&#x27;</span>, <span class="hljs-string">&#x27;js&#x27;</span>, <span class="hljs-string">&#x27;json&#x27;</span>]
+};
+</code></pre>
+<h2 id="development-best-practices">Development Best Practices</h2>
+<h3 id="code-style">Code Style</h3>
+<ul>
+<li>Follow the TypeScript coding guidelines</li>
+<li>Use meaningful variable and function names</li>
+<li>Write JSDoc comments for all public methods and classes</li>
+<li>Keep functions small and focused on a single responsibility</li>
+</ul>
+<h3 id="git-workflow">Git Workflow</h3>
+<ol>
+<li>Create a new branch for each feature or bug fix</li>
+<li>Make small, focused commits with clear messages</li>
+<li>Write tests for new features</li>
+<li>Submit a pull request for review</li>
+</ol>
+<h3 id="testing">Testing</h3>
+<ul>
+<li>Write unit tests for all new functionality</li>
+<li>Ensure all tests pass before submitting a pull request</li>
+<li>Aim for high test coverage</li>
+</ul>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="common-issues">Common Issues</h3>
+<h4 id="module-not-found-error">Module Not Found Error</h4>
+<p>If you encounter a &quot;Module not found&quot; error, check:</p>
+<ul>
+<li>That all dependencies are installed (<code>npm install</code>)</li>
+<li>That import paths are correct (case-sensitive)</li>
+<li>That the module exists in the specified location</li>
+</ul>
+<h4 id="typescript-compilation-errors">TypeScript Compilation Errors</h4>
+<p>For TypeScript errors:</p>
+<ul>
+<li>Check the error message for details on the issue</li>
+<li>Ensure your TypeScript version is compatible with the project</li>
+<li>Verify that your <code>tsconfig.json</code> is correctly configured</li>
+</ul>
+<h4 id="webpack-build-issues">Webpack Build Issues</h4>
+<p>If Webpack fails to build:</p>
+<ul>
+<li>Check the console for specific error messages</li>
+<li>Verify that your <code>webpack.config.js</code> is correctly configured</li>
+<li>Ensure all required loaders and plugins are installed</li>
+</ul>
+<h2 id="next-steps">Next Steps</h2>
+<p>Now that you have set up the project, you can:</p>
+<ul>
+<li>Explore the <a href="../api/index.md">API Reference</a> to understand the available components</li>
+<li>Check out the <a href="getting-started.md">Getting Started Guide</a> for usage instructions</li>
+<li>Look at the <a href="../examples/index.md">Examples</a> for implementation ideas</li>
+<li>Read the <a href="contributing.md">Contributing Guide</a> if you want to contribute to the project</li>
+</ul>
+<h2 id="getting-help">Getting Help</h2>
+<p>If you encounter any issues or have questions:</p>
+<ul>
+<li>Check the <a href="troubleshooting.md">Troubleshooting Guide</a></li>
+<li>Open an issue on GitHub</li>
+<li>Reach out to the project maintainers</li>
+</ul>
+<pre><code class="hljs language-mermaid">graph TD
+    A[Clone Repository] --&gt; B[Install Dependencies]
+    B --&gt; C[Explore Project Structure]
+    C --&gt; D{Development Task}
+    D --&gt; E[Build Project]
+    D --&gt; F[Run Example]
+    D --&gt; G[Run Tests]
+    D --&gt; H[Lint &amp; Format]
+    E --&gt; I[Make Changes]
+    F --&gt; I
+    G --&gt; I
+    H --&gt; I
+    I --&gt; J[Commit Changes]
+    J --&gt; K[Submit Pull Request]
+</code></pre>
+
+    </main>
+    
+    <footer class="footer">
+      <p>Map Controls is licensed under the MIT License.</p>
+      <p>Documentation generated on 5/18/2025</p>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,503 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Types and Interfaces - Map Controls Documentation</title>
+  <link rel="stylesheet" href="/documentation/assets/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.0.0/dist/mermaid.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Initialize syntax highlighting
+      hljs.highlightAll();
+      
+      // Initialize mermaid diagrams
+      mermaid.initialize({ 
+        startOnLoad: true,
+        theme: 'neutral',
+        flowchart: { 
+          useMaxWidth: true, 
+          htmlLabels: true 
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Types and Interfaces</h1>
+    </header>
+    
+    <nav class="main-nav">
+      <ul>
+        <li><a href="/documentation/index.html">Home</a></li>
+        <li><a href="/documentation/guides/getting-started.html">Getting Started</a></li>
+        <li><a href="/documentation/guides/installation.html">Installation</a></li>
+        <li><a href="/documentation/api/index.html">API Reference</a></li>
+        <li><a href="/documentation/examples/index.html">Examples</a></li>
+        <li><a href="/documentation/guides/advanced-usage.html">Advanced Usage</a></li>
+      </ul>
+    </nav>
+    
+    <main>
+      <h1 id="types-and-interfaces">Types and Interfaces</h1>
+<p>This page documents all the TypeScript types and interfaces used in the Map Controls module.</p>
+<h2 id="core-types">Core Types</h2>
+<h3 id="position">Position</h3>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Position</span> {
+  <span class="hljs-attr">x</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">y</span>: <span class="hljs-built_in">number</span>;
+}
+</code></pre>
+<p>Represents a position with x and y coordinates.</p>
+<h4 id="properties">Properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>x</code></td>
+<td><code>number</code></td>
+<td>The x-coordinate</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td><code>number</code></td>
+<td>The y-coordinate</td>
+</tr>
+</tbody></table>
+<h4 id="usage-example">Usage Example</h4>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">const</span> <span class="hljs-attr">position</span>: <span class="hljs-title class_">Position</span> = { <span class="hljs-attr">x</span>: <span class="hljs-number">100</span>, <span class="hljs-attr">y</span>: <span class="hljs-number">200</span> };
+mapControls.<span class="hljs-title function_">panTo</span>(position.<span class="hljs-property">x</span>, position.<span class="hljs-property">y</span>);
+</code></pre>
+<h3 id="size">Size</h3>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Size</span> {
+  <span class="hljs-attr">width</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">height</span>: <span class="hljs-built_in">number</span>;
+}
+</code></pre>
+<p>Represents dimensions with width and height.</p>
+<h4 id="properties-1">Properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>width</code></td>
+<td><code>number</code></td>
+<td>The width dimension</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td><code>number</code></td>
+<td>The height dimension</td>
+</tr>
+</tbody></table>
+<h4 id="usage-example-1">Usage Example</h4>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">const</span> <span class="hljs-attr">size</span>: <span class="hljs-title class_">Size</span> = { <span class="hljs-attr">width</span>: <span class="hljs-number">800</span>, <span class="hljs-attr">height</span>: <span class="hljs-number">600</span> };
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Map size: <span class="hljs-subst">${size.width}</span>x<span class="hljs-subst">${size.height}</span>`</span>);
+</code></pre>
+<h2 id="configuration">Configuration</h2>
+<h3 id="mapcontrolsoptions">MapControlsOptions</h3>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">MapControlsOptions</span> {
+  <span class="hljs-comment">/** DOM element to contain the map */</span>
+  <span class="hljs-attr">container</span>: <span class="hljs-title class_">HTMLElement</span>;
+  <span class="hljs-comment">/** Path to the map image */</span>
+  <span class="hljs-attr">mapSrc</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-comment">/** Initial zoom level (default: 1) */</span>
+  <span class="hljs-attr">initialZoom</span>?: <span class="hljs-built_in">number</span>;
+  <span class="hljs-comment">/** Initial position (default: centered) */</span>
+  <span class="hljs-attr">initialPosition</span>?: <span class="hljs-title class_">Position</span>;
+  <span class="hljs-comment">/** Minimum zoom level (default: 0.5) */</span>
+  <span class="hljs-attr">minZoom</span>?: <span class="hljs-built_in">number</span>;
+  <span class="hljs-comment">/** Maximum zoom level (default: 3) */</span>
+  <span class="hljs-attr">maxZoom</span>?: <span class="hljs-built_in">number</span>;
+  <span class="hljs-comment">/** Whether to show control buttons (default: true) */</span>
+  <span class="hljs-attr">showControls</span>?: <span class="hljs-built_in">boolean</span>;
+  <span class="hljs-comment">/** Position of the controls (default: &#x27;bottom-right&#x27;) */</span>
+  <span class="hljs-attr">controlsPosition</span>?: <span class="hljs-string">&#x27;top-left&#x27;</span> | <span class="hljs-string">&#x27;top-right&#x27;</span> | <span class="hljs-string">&#x27;bottom-left&#x27;</span> | <span class="hljs-string">&#x27;bottom-right&#x27;</span>;
+  <span class="hljs-comment">/** Zoom step for zoom in/out operations (default: 0.1) */</span>
+  <span class="hljs-attr">zoomStep</span>?: <span class="hljs-built_in">number</span>;
+  <span class="hljs-comment">/** Pan step for pan operations in pixels (default: 50) */</span>
+  <span class="hljs-attr">panStep</span>?: <span class="hljs-built_in">number</span>;
+}
+</code></pre>
+<p>Configuration options for the MapControls class.</p>
+<h4 id="properties-2">Properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>container</code></td>
+<td><code>HTMLElement</code></td>
+<td>Yes</td>
+<td>-</td>
+<td>DOM element to contain the map</td>
+</tr>
+<tr>
+<td><code>mapSrc</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>-</td>
+<td>Path to the map image</td>
+</tr>
+<tr>
+<td><code>initialZoom</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td><code>1</code></td>
+<td>Initial zoom level</td>
+</tr>
+<tr>
+<td><code>initialPosition</code></td>
+<td><code>Position</code></td>
+<td>No</td>
+<td><code>null</code></td>
+<td>Initial position (null means center)</td>
+</tr>
+<tr>
+<td><code>minZoom</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td><code>0.5</code></td>
+<td>Minimum zoom level</td>
+</tr>
+<tr>
+<td><code>maxZoom</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td><code>3</code></td>
+<td>Maximum zoom level</td>
+</tr>
+<tr>
+<td><code>showControls</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td><code>true</code></td>
+<td>Whether to show control buttons</td>
+</tr>
+<tr>
+<td><code>controlsPosition</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td><code>&#39;bottom-right&#39;</code></td>
+<td>Position of the controls</td>
+</tr>
+<tr>
+<td><code>zoomStep</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td><code>0.1</code></td>
+<td>Zoom step for zoom in/out operations</td>
+</tr>
+<tr>
+<td><code>panStep</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td><code>50</code></td>
+<td>Pan step for pan operations in pixels</td>
+</tr>
+</tbody></table>
+<h4 id="usage-example-2">Usage Example</h4>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">const</span> <span class="hljs-attr">options</span>: <span class="hljs-title class_">MapControlsOptions</span> = {
+  <span class="hljs-attr">container</span>: <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;map-container&#x27;</span>)!,
+  <span class="hljs-attr">mapSrc</span>: <span class="hljs-string">&#x27;assets/world-map.jpg&#x27;</span>,
+  <span class="hljs-attr">initialZoom</span>: <span class="hljs-number">1</span>,
+  <span class="hljs-attr">initialPosition</span>: { <span class="hljs-attr">x</span>: -<span class="hljs-number">1500</span>, <span class="hljs-attr">y</span>: <span class="hljs-number">0</span> }, <span class="hljs-comment">// Position to show the Pacific Ocean</span>
+  <span class="hljs-attr">minZoom</span>: <span class="hljs-number">0.5</span>,
+  <span class="hljs-attr">maxZoom</span>: <span class="hljs-number">1.5</span>,
+  <span class="hljs-attr">showControls</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">controlsPosition</span>: <span class="hljs-string">&#x27;bottom-right&#x27;</span>,
+  <span class="hljs-attr">zoomStep</span>: <span class="hljs-number">0.1</span>,
+  <span class="hljs-attr">panStep</span>: <span class="hljs-number">50</span>
+};
+
+<span class="hljs-keyword">const</span> mapControls = <span class="hljs-keyword">new</span> <span class="hljs-title class_">MapControls</span>(options);
+</code></pre>
+<h2 id="state">State</h2>
+<h3 id="mapstate">MapState</h3>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">MapState</span> {
+  <span class="hljs-comment">/** Current zoom level */</span>
+  <span class="hljs-attr">zoom</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-comment">/** Current position */</span>
+  <span class="hljs-attr">position</span>: <span class="hljs-title class_">Position</span>;
+  <span class="hljs-comment">/** Map dimensions */</span>
+  <span class="hljs-attr">mapSize</span>: <span class="hljs-title class_">Size</span>;
+  <span class="hljs-comment">/** Container dimensions */</span>
+  <span class="hljs-attr">containerSize</span>: <span class="hljs-title class_">Size</span>;
+}
+</code></pre>
+<p>Represents the current state of the map.</p>
+<h4 id="properties-3">Properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>zoom</code></td>
+<td><code>number</code></td>
+<td>Current zoom level</td>
+</tr>
+<tr>
+<td><code>position</code></td>
+<td><code>Position</code></td>
+<td>Current position</td>
+</tr>
+<tr>
+<td><code>mapSize</code></td>
+<td><code>Size</code></td>
+<td>Map dimensions</td>
+</tr>
+<tr>
+<td><code>containerSize</code></td>
+<td><code>Size</code></td>
+<td>Container dimensions</td>
+</tr>
+</tbody></table>
+<h4 id="usage-example-3">Usage Example</h4>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">const</span> state = mapControls.<span class="hljs-title function_">getState</span>();
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Current zoom: <span class="hljs-subst">${state.zoom}</span>`</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Current position: <span class="hljs-subst">${state.position.x}</span>, <span class="hljs-subst">${state.position.y}</span>`</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Map size: <span class="hljs-subst">${state.mapSize.width}</span>x<span class="hljs-subst">${state.mapSize.height}</span>`</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Container size: <span class="hljs-subst">${state.containerSize.width}</span>x<span class="hljs-subst">${state.containerSize.height}</span>`</span>);
+</code></pre>
+<h2 id="events">Events</h2>
+<h3 id="eventtype">EventType</h3>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">type</span> <span class="hljs-title class_">EventType</span> = <span class="hljs-string">&#x27;zoom&#x27;</span> | <span class="hljs-string">&#x27;pan&#x27;</span> | <span class="hljs-string">&#x27;load&#x27;</span> | <span class="hljs-string">&#x27;error&#x27;</span>;
+</code></pre>
+<p>Defines the types of events that can be dispatched by the map controls.</p>
+<h4 id="values">Values</h4>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&#39;zoom&#39;</code></td>
+<td>Fired when the zoom level changes</td>
+</tr>
+<tr>
+<td><code>&#39;pan&#39;</code></td>
+<td>Fired when the map is panned</td>
+</tr>
+<tr>
+<td><code>&#39;load&#39;</code></td>
+<td>Fired when the map is loaded</td>
+</tr>
+<tr>
+<td><code>&#39;error&#39;</code></td>
+<td>Fired when an error occurs</td>
+</tr>
+</tbody></table>
+<h4 id="usage-example-4">Usage Example</h4>
+<pre><code class="hljs language-typescript"><span class="hljs-comment">// Listen for zoom events</span>
+mapControls.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;zoom&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">level</span>) =&gt;</span> {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Zoom level changed to: <span class="hljs-subst">${level}</span>`</span>);
+});
+
+<span class="hljs-comment">// Listen for pan events</span>
+mapControls.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;pan&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">position</span>) =&gt;</span> {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Map panned to position: <span class="hljs-subst">${position.x}</span>, <span class="hljs-subst">${position.y}</span>`</span>);
+});
+</code></pre>
+<h3 id="eventhandler">EventHandler</h3>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">type</span> <span class="hljs-title class_">EventHandler</span> = <span class="hljs-function">(<span class="hljs-params">...<span class="hljs-attr">args</span>: <span class="hljs-built_in">any</span>[]</span>) =&gt;</span> <span class="hljs-built_in">void</span>;
+</code></pre>
+<p>Defines the signature for event handler functions.</p>
+<h4 id="usage-example-5">Usage Example</h4>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">const</span> <span class="hljs-attr">zoomHandler</span>: <span class="hljs-title class_">EventHandler</span> = <span class="hljs-function">(<span class="hljs-params">level</span>) =&gt;</span> {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Zoom level: <span class="hljs-subst">${level}</span>`</span>);
+};
+
+mapControls.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;zoom&#x27;</span>, zoomHandler);
+</code></pre>
+<h3 id="eventlistener">EventListener</h3>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">EventListener</span> {
+  <span class="hljs-attr">type</span>: <span class="hljs-title class_">EventType</span>;
+  <span class="hljs-attr">handler</span>: <span class="hljs-title class_">EventHandler</span>;
+}
+</code></pre>
+<p>Represents an event listener with a type and handler function.</p>
+<h4 id="properties-4">Properties</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>type</code></td>
+<td><code>EventType</code></td>
+<td>The type of event</td>
+</tr>
+<tr>
+<td><code>handler</code></td>
+<td><code>EventHandler</code></td>
+<td>The event handler function</td>
+</tr>
+</tbody></table>
+<h2 id="rendering">Rendering</h2>
+<h3 id="renderer">Renderer</h3>
+<pre><code class="hljs language-typescript"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Renderer</span> {
+  <span class="hljs-comment">/** Initialize the renderer */</span>
+  <span class="hljs-title function_">init</span>(<span class="hljs-attr">container</span>: <span class="hljs-title class_">HTMLElement</span>, <span class="hljs-attr">mapSrc</span>: <span class="hljs-built_in">string</span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt;;
+  <span class="hljs-comment">/** Render the map with current state */</span>
+  <span class="hljs-title function_">render</span>(<span class="hljs-attr">state</span>: <span class="hljs-title class_">MapState</span>): <span class="hljs-built_in">void</span>;
+  <span class="hljs-comment">/** Clean up resources */</span>
+  <span class="hljs-title function_">destroy</span>(): <span class="hljs-built_in">void</span>;
+  <span class="hljs-comment">/** Get the map size */</span>
+  <span class="hljs-title function_">getMapSize</span>(): <span class="hljs-title class_">Size</span>;
+}
+</code></pre>
+<p>Interface for map renderers.</p>
+<h4 id="methods">Methods</h4>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Return Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>init</code></td>
+<td><code>Promise&lt;void&gt;</code></td>
+<td>Initializes the renderer</td>
+</tr>
+<tr>
+<td><code>render</code></td>
+<td><code>void</code></td>
+<td>Renders the map with the current state</td>
+</tr>
+<tr>
+<td><code>destroy</code></td>
+<td><code>void</code></td>
+<td>Cleans up resources</td>
+</tr>
+<tr>
+<td><code>getMapSize</code></td>
+<td><code>Size</code></td>
+<td>Gets the map size</td>
+</tr>
+</tbody></table>
+<h2 id="type-relationships">Type Relationships</h2>
+<p>The following diagram shows the relationships between the main types and interfaces:</p>
+<pre><code class="hljs language-mermaid">classDiagram
+    class MapControls {
+        +constructor(options: MapControlsOptions)
+        +on(type: EventType, handler: EventHandler): void
+        +off(type: EventType, handler: EventHandler): void
+        +zoomIn(factor?: number): void
+        +zoomOut(factor?: number): void
+        +panTo(x: number, y: number): void
+        +reset(): void
+        +setMapSrc(mapSrc: string): Promise~void~
+        +showControls(): void
+        +hideControls(): void
+        +getState(): MapState
+        +destroy(): void
+    }
+    
+    class MapControlsOptions {
+        +container: HTMLElement
+        +mapSrc: string
+        +initialZoom?: number
+        +initialPosition?: Position
+        +minZoom?: number
+        +maxZoom?: number
+        +showControls?: boolean
+        +controlsPosition?: string
+        +zoomStep?: number
+        +panStep?: number
+    }
+    
+    class MapState {
+        +zoom: number
+        +position: Position
+        +mapSize: Size
+        +containerSize: Size
+    }
+    
+    class Position {
+        +x: number
+        +y: number
+    }
+    
+    class Size {
+        +width: number
+        +height: number
+    }
+    
+    class EventType {
+        &lt;&lt;enumeration&gt;&gt;
+        ZOOM
+        PAN
+        LOAD
+        ERROR
+    }
+    
+    class EventHandler {
+        &lt;&lt;function&gt;&gt;
+        +(...args: any[]): void
+    }
+    
+    class Renderer {
+        &lt;&lt;interface&gt;&gt;
+        +init(container: HTMLElement, mapSrc: string): Promise~void~
+        +render(state: MapState): void
+        +destroy(): void
+        +getMapSize(): Size
+    }
+    
+    MapControls --&gt; MapControlsOptions : uses
+    MapControls --&gt; MapState : maintains
+    MapState --&gt; Position : contains
+    MapState --&gt; Size : contains
+    MapControlsOptions --&gt; Position : references
+    MapControls --&gt; EventType : dispatches
+    MapControls --&gt; EventHandler : accepts
+    MapControls --&gt; Renderer : uses
+</code></pre>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="mapcontrols.md">MapControls Class</a></li>
+<li><a href="constants.md">Constants</a></li>
+<li><a href="eventmanager.md">EventManager</a></li>
+</ul>
+
+    </main>
+    
+    <footer class="footer">
+      <p>Map Controls is licensed under the MIT License.</p>
+      <p>Documentation generated on 5/18/2025</p>
+    </footer>
+  </div>
+</body>
+</html>
